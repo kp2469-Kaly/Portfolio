@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBR Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Protest+Strike&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@300;400&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50" tabindex="0">
+    <div class="container">
+        <header class="row bg-gradient text-white text-center p-4 mb-4">
+            <div class="col">
+                <h1 class="display-4">Kalyana Balaji Rajgopal Pabbisetty</h1>
+                <h2 class="h4">Aspiring Data Scientist</h2>
+            </div>
+        </header>
+
+        <section id="greeting"></section>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#summary">Summary</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                    <a href="https://drive.google.com/file/d/12Kp42UZLQ_XR-ckg99_5ejWZaRRUMlht/view?usp=drive_link" class="btn btn-primary ms-lg-3" id="download-resume" target="_blank">Download Resume</a>
+                    <p style="color: white;">DOWNLOADS: <span id="download-count">0</span></p>
+                </div>
+            </div>
+        </nav>
+
+        <main class="row">
+            <!-- Summary Section -->
+            <section id="summary" class="col-12 mb-4">
+                <h3 class="h2">Introduction</h3>
+                <p class="lead">Hello! I am <strong>Kalyana Balaji Rajgopal Pabbisetty</strong>, a sophomore at Northern Arizona University, majoring in <em><strong>Computer Science</strong></em>. I am passionate about software development and web technologies, with experience in programming languages like <b>Python, C, and Java</b>. I have a diverse skill set ranging from social media management to machine learning, and I enjoy contributing to community and academic initiatives.</p>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="section mb-4">
+                <h3 class="h2">Skills</h3>
+                
+                <!-- Search Skills -->
+                <div class="mb-3">
+                    <input type="text" id="skill-search" class="form-control" placeholder="Search skills...">
+                </div>
+            
+                <!-- Add/Edit Skills Form -->
+                <form id="skill-form" class="mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" id="skill-input" class="form-control" placeholder="Enter a skill" required>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="category-select" class="form-select" required>
+                                <option value="Programming Languages">Programming Languages</option>
+                                <option value="Technologies">Technologies</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" id="skill-submit" class="btn btn-primary w-100">Add Skill</button>
+                        </div>
+                    </div>
+                </form>
+            
+                <!-- Skills Lists -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-3 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Programming Languages</h5>
+                                <ul id="programming" class="list-unstyled"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-3 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Technologies</h5>
+                                <ul id="tech" class="list-unstyled"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-3 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Others</h5>
+                                <ul id="others" class="list-unstyled"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="col-12 mb-4">
+                <h3 class="h2">Projects</h3>
+                <div class="row" id="projects-list"></div>
+            </section>
+            <button id="sort-projects" class="btn btn-primary mb-3" data-ascending="true">
+                Sort by Deadline (Earliest First)
+            </button>
+
+            <!-- Education Section -->
+            <section id="education" class="col-12 mb-4">
+                <h3 class="h2">Education & Experience</h3>
+                <div id="education-table"></div>
+                <div id="experience-table"></div>
+            </section>
+
+        </main>
+
+        <footer id="contact" class="row bg-gradient text-white text-center py-3">
+            <div class="col">
+                <h3 class="h2">Contact Information</h3>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="mailto:kp2469@nau.edu" class="text-white">Email</a></li>
+                    <li class="list-inline-item"><a href="tel:+15204919602" class="text-white">Phone</a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/kalyana-pabbisetty-6a613a314/" class="text-white" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
