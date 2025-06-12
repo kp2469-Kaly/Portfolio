@@ -53,12 +53,12 @@ $(document).ready(function() {
             const li = $('<li>').addClass('nav-item');
             const link = $('<a>')
                 .addClass('nav-link')
-                .attr('href', #${item.id})
+                .attr('href', `#${item.id}`)
                 .text(item.text)
                 .click(function(e) {
                     e.preventDefault();
                     $('html, body').animate({
-                        scrollTop: $(#${item.id}).offset().top - 70
+                        scrollTop: $(`#${item.id}`).offset().top - 70
                     }, 800);
                 });
             li.append(link);
@@ -162,14 +162,14 @@ $(document).ready(function() {
         skillsArray.push(newSkill);
         renderSkills();
 
-        $([data-id="${newSkill.id}"]).hide().fadeIn(500);
+        $(`[data-id="${newSkill.id}"]`).hide().fadeIn(500);
         return true;
     }
 
     function removeSkill(id) {
         const index = skillsArray.findIndex(skill => skill.id === id);
         if (index !== -1) {
-            const skillElement = $([data-id="${id}"]);
+            const skillElement = $(`[data-id="${id}"]`);
             skillElement.slideUp(300, function() {
                 skillsArray.splice(index, 1);
                 renderSkills();
@@ -193,7 +193,7 @@ $(document).ready(function() {
             skill.name = newName;
             skill.category = newCategory;
             renderSkills();
-            $([data-id="${id}"]).hide().fadeIn(500);
+            $(`[data-id="${id}"]`).hide().fadeIn(500);
         }
     }
 
@@ -225,6 +225,20 @@ $(document).ready(function() {
         }
     });
 
+    $('#skill-search').on('input', function() {
+        const searchTerm = $(this).val().toLowerCase();
+        
+        $('.skill-item').show();
+
+        if (searchTerm) {
+            $('.skill-item').each(function() {
+                const skillText = $(this).find('.skill-text').text().toLowerCase();
+                if (!skillText.includes(searchTerm)) {
+                    $(this).hide();
+                }
+            });
+        }
+    });
 
     const projects = [
         {
@@ -262,7 +276,7 @@ $(document).ready(function() {
         projectsArray.forEach(project => {
             const projectCard = $('<div>').addClass('col-md-6');
             projectCard.html(
-                <div class="card mb-3 shadow-sm">
+                `<div class="card mb-3 shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">${project.title}</h5>
                         <p>${project.description}</p>
@@ -273,7 +287,7 @@ $(document).ready(function() {
                         <p>Project Deadline: ${project.deadline.toLocaleDateString()}</p>
                         <p>Status: ${project.deadline > new Date() ? 'Ongoing' : 'Completed'}</p>
                     </div>
-                </div>
+                </div>`
             );
             projectsList.append(projectCard);
         });
@@ -287,7 +301,7 @@ $(document).ready(function() {
                 b.deadline - a.deadline;
         });
         $(this).data('ascending', !isAscending);
-        $(this).text(Sort by Deadline (${isAscending ? 'Latest First' : 'Earliest First'}));
+        $(this).text(`Sort by Deadline (${isAscending ? 'Latest First' : 'Earliest First'})`);
         renderProjects(projects);
     });
 
