@@ -96,39 +96,26 @@ $(document).ready(function() {
         $('#navbarNav').html(navList);
     }
 
-function renderSkills() {
-    const programmingList = $('#programming').empty();
-    const techList = $('#tech').empty();
-    const othersList = $('#others').empty();
+    function renderSkills() {
+        const programmingList = $('#programming').empty();
+        const techList = $('#tech').empty();
+        const othersList = $('#others').empty();
 
-    skillsArray.forEach(skill => {
-        const skillItem = createSkillElement(skill);
-
-        switch(skill.category) {
-            case 'Programming Languages':
-                programmingList.append(skillItem);
-                break;
-            case 'Technologies':
-                techList.append(skillItem);
-                break;
-            default:
-                othersList.append(skillItem);
-        }
-    });
-
-     $('#skill-search').off('input').on('input', function() {
-        const searchTerm = $(this).val().toLowerCase();
-
-        $('.skill-item').each(function() {
-            const skillText = $(this).find('.skill-text').text().toLowerCase();
-            if (skillText.includes(searchTerm)) {
-                $(this).show();
-            } else {
-                $(this).hide();
+        skillsArray.forEach(skill => {
+            const skillItem = createSkillElement(skill);
+            
+            switch(skill.category) {
+                case 'Programming Languages':
+                    programmingList.append(skillItem);
+                    break;
+                case 'Technologies':
+                    techList.append(skillItem);
+                    break;
+                default:
+                    othersList.append(skillItem);
             }
         });
-    });
-}
+    }
 
     function createSkillElement(skill) {
         const li = $('<li>')
@@ -237,6 +224,7 @@ function renderSkills() {
             $('#skill-submit').text('Add Skill');
         }
     });
+
 
     const projects = [
         {
